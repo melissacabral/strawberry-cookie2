@@ -1,0 +1,104 @@
+/*
+Theme Name: Strawberry Cookie
+Description: A simple starter theme for learning
+Author: Melissa Cabral
+License: GPLv3
+Version: 0.1
+*/
+
+body {
+  max-width: 60em;
+  margin: 0 auto;
+}
+.admin-bar{
+  margin-top:32px;
+}
+header nav {
+  background: #eee;
+  margin: 1em 0;
+}
+header nav ul,
+header nav li {
+  list-style-type:none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+header nav a {
+  display: block;
+  padding: .5em;
+}
+header nav .children{
+  display: flex;
+  flex-wrap:wrap;
+  background-color:#ddd;
+  font-size:1.2rem;
+}
+.header nav .children li{
+  width:50%;
+  min-width:200px;
+}
+header nav a:hover {
+  background: #ddd;
+  text-decoration: none;
+}
+input[name=s]{
+  width:auto;
+}
+article {
+  margin-bottom: 3em;
+}
+.postmeta {
+  clear:both;
+  background: #eee;
+  margin:1em 0;
+  padding: .3em;
+  font-size: .7em;
+  color:#999;
+}
+.postmeta span:not(:last-child) {
+  border-right: solid 1px #ccc;
+  margin-right: .3em;
+  padding-right: .3em;
+}
+
+@media screen and (min-width:600px) {
+  header nav ul {
+   display:flex;
+   flex-wrap: wrap;
+ }
+ header nav ul.children{
+  position:absolute;
+  left:0;
+  top:100%;
+  background-color: #ddd;
+  min-width:200px;
+  display:none;
+  font-size: inherit;
+}
+header nav .children li, 
+header nav .children a{
+  display: block;
+  width:auto;   
+}
+header nav > ul > li:hover > ul{
+  display:block;
+}
+.content {
+  float: left;
+  width: 68%;
+}
+.page .content{
+  width:100%;
+  float:none;
+}
+.sidebar {
+  float: right;
+  width: 27%;
+}
+.footer {
+  border-top: solid 1px #ddd;
+  clear: both;
+  text-align: center;
+}
+}
