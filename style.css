@@ -13,6 +13,9 @@ body {
 .admin-bar{
   margin-top:32px;
 }
+header{
+  background-size: cover;
+}
 header nav {
   background: #eee;
   margin: 1em 0;

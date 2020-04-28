@@ -29,6 +29,11 @@
       <!-- end postmeta -->
     </article>
     <!-- end post -->
+
+
+    <?php comments_template(); //display comment list and form ?>
+
+
 	<?php 
 		}//end while
 	}else{ ?>

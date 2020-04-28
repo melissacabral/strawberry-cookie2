@@ -22,7 +22,7 @@
        <?php
        // excerpts are short previews of the content 
        //the_content(); 
-       the_excerpt(); ?>
+       the_excerpt(100); ?>
       </div>
       <div class="postmeta">
         <span class="author">by: <?php the_author(); ?> </span>
