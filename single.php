@@ -15,7 +15,10 @@
 				<?php the_title(); ?> 			
 			</h2>
       <div class="entry-content">
-       <?php the_content(); ?>
+       <?php 
+       the_content(); 
+       wp_link_pages(); //for paginated posts
+       ?>
       </div>
       <div class="postmeta">
         <span class="author">by: <?php the_author(); ?> </span>
@@ -30,7 +33,14 @@
     </article>
     <!-- end post -->
 
+    <section class="pagination">
+      <?php 
+      previous_post_link( '%link', '&larr; %title' );
+      next_post_link( '%link', '%title &rarr;' );      
+      ?>
+    </section>
 
+     
     <?php comments_template(); //display comment list and form ?>
 
 

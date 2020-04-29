@@ -55,6 +55,24 @@ function sc_better_replies(){
 add_action( 'wp_enqueue_scripts', 'sc_better_replies' );
 
 
+//Set up Menu Locations
+function sc_menu_setup(){
+	register_nav_menus( array(
+		'main_menu' 	=> 'Main Menu',
+		'social_icons' 	=> 'Social Media Icons',
+	) );
+}
+add_action( 'init', 'sc_menu_setup' );
+
+//attach any needed stylesheets
+function sc_styles(){
+	//genericons for social menu
+	$url = get_stylesheet_directory_uri() . '/genericons/genericons.css';
+	wp_enqueue_style( 'genericons', $url );
+}
+add_action( 'wp_enqueue_scripts', 'sc_styles' );
+
+
 
 
 

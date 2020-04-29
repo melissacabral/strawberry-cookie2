@@ -19,15 +19,28 @@
 
     <h1 class="site-title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
     <h2><?php bloginfo('description'); ?></h2>
-    <nav>
-      <ul class="nav">
-       <?php 
-       //temporary nav until we learn about the menu system
-       wp_list_pages( array(
-          'title_li' => '',
-       ) ); ?>
-      </ul>
-    </nav>  
+    
+    <?php 
+    //Main Navigation
+    wp_nav_menu( array(
+      'theme_location'  => 'main_menu', //registered in functions.php
+      'fallback_cb'     => false,
+      'container'       => 'nav',       //wrap with <nav> instead of <div>
+      'container_class' => 'main-menu',
+    ) ); ?>  
+
+
+    <?php 
+    //Social Icons
+    wp_nav_menu( array(
+      'theme_location'  => 'social_icons',
+      'fallback_cb'     => false,
+      'container_class' => 'social-navigation',
+      'link_before'     => '<span class="screen-reader-text">',
+      'link_after'      => '</span>',
+    ) );
+     ?>
+
 
    <?php get_search_form(); //include searchform.php or do the default if it doesn't exist ?>
     

@@ -1,4 +1,4 @@
-<?php get_header(); //requires  header.php ?>
+<?php get_header(); //requires header.php ?>
 
   <main class="content">
    
@@ -22,7 +22,7 @@
        <?php
        // excerpts are short previews of the content 
        //the_content(); 
-       the_excerpt(100); ?>
+       the_excerpt(); ?>
       </div>
       <div class="postmeta">
         <span class="author">by: <?php the_author(); ?> </span>
@@ -38,6 +38,25 @@
     <!-- end post -->
 	<?php 
 		}//end while
+  ?>
+
+  <section class="pagination">
+    <?php 
+    //example of next & previous buttons
+    //previous_posts_link('&larr; Newer Posts'); //newer posts
+    //next_posts_link('Older Posts &rarr;'); //older posts
+    
+    //numbered pagination
+    the_posts_pagination(array(
+      'prev_text' => '&larr;',
+      'next_text' => 'Next Page &rarr;',
+      'mid_size'  => 2,
+    ));
+    
+    ?>
+  </section>
+
+  <?php
 	}else{ ?>
 
 		<div class="noposts">Sorry, no posts to show</div>
