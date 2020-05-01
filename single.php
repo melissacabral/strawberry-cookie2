@@ -41,7 +41,7 @@
     </section>
 
      
-    <?php comments_template(); //display comment list and form ?>
+    <?php comments_template(); //include comments.php - comment list and form ?>
 
 
 	<?php 
