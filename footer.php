@@ -2,9 +2,10 @@
 <!-- end .wrapper -->
 
 <footer class="footer contentinfo">
-  <small>
-    &copy; 2014-2019 by SITE TITLE. All Rights Reserved. <a href="#">Privacy Policy</a>
-  </small>
+  <?php 
+  //Display Widget Area
+  dynamic_sidebar('footer-area'); 
+  ?>
 </footer>
 
 <?php wp_footer(); //required for plugins and admin bar to work  ?>

@@ -1,4 +1,8 @@
 <aside class="sidebar">
+
+  <?php //show widgets if they exist
+  if( ! dynamic_sidebar('blog-sidebar') ){
+  ?>
     
     <section id="categories" class="widget">
       <h3 class="widget-title"> Categories </h3>
@@ -57,5 +61,7 @@
         </li>
       </ul>
     </section>
-  </aside>
-  <!-- end #sidebar -->
+
+  <?php } //end if widgets ?>
+</aside>
+<!-- end #sidebar -->

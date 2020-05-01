@@ -31,5 +31,6 @@
   </main>
   <!-- end #content -->
 
+<?php get_sidebar('page'); //include sidebar-page.php ?>
 
 <?php get_footer();  //requires footer.php ?>
