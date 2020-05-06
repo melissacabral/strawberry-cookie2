@@ -2,6 +2,9 @@
 //max width for embeds like youtube videos
 if ( ! isset( $content_width ) ) $content_width = 640;
 
+//add an image size for wide banner images 
+add_image_size( 'sc_wide', 800, 300, true );
+
 //activate "sleeping features"
 
 //SEO-friendly titles on every page (you should not have <title> tag in header.php)
