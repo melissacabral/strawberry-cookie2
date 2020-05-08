@@ -13,37 +13,38 @@
 <body <?php body_class(); ?>>
 
 	<header class="header" style="background-image:url(<?php header_image(); ?>)">
-  <div class="header-bar">
+      <div class="header-branding">
 
-    <?php the_custom_logo(); ?>
+        <?php the_custom_logo(); ?>
 
-    <h1 class="site-title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
-    <h2><?php bloginfo('description'); ?></h2>
-    
-    <?php 
-    //Main Navigation
-    wp_nav_menu( array(
-      'theme_location'  => 'main_menu', //registered in functions.php
-      'fallback_cb'     => false,
-      'container'       => 'nav',       //wrap with <nav> instead of <div>
-      'container_class' => 'main-menu',
-    ) ); ?>  
-
-
-    <?php 
-    //Social Icons
-    wp_nav_menu( array(
-      'theme_location'  => 'social_icons',
-      'fallback_cb'     => false,
-      'container_class' => 'social-navigation',
-      'link_before'     => '<span class="screen-reader-text">',
-      'link_after'      => '</span>',
-    ) );
-     ?>
+        <h1 class="site-title"><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a></h1>
+        <h2><?php bloginfo('description'); ?></h2>
+      </div>
+        
+        <?php 
+        //Main Navigation
+        wp_nav_menu( array(
+          'theme_location'  => 'main_menu', //registered in functions.php
+          'fallback_cb'     => false,
+          'container'       => 'nav',       //wrap with <nav> instead of <div>
+          'container_class' => 'main-menu',
+        ) ); ?>  
 
 
-   <?php get_search_form(); //include searchform.php or do the default if it doesn't exist ?>
-    
-  </div>
-</header>
+        <?php 
+        //Social Icons
+        wp_nav_menu( array(
+          'theme_location'  => 'social_icons',
+          'fallback_cb'     => false,
+          'container_class' => 'social-navigation',
+          'link_before'     => '<span class="screen-reader-text">',
+          'link_after'      => '</span>',
+        ) );
+         ?>
+
+
+       <?php get_search_form(); //include searchform.php or do the default if it doesn't exist ?>
+        
+
+    </header>
 <div class="wrapper">

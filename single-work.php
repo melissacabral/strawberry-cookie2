@@ -14,6 +14,9 @@
       <h2 class="entry-title"> 
 				<?php the_title(); ?> 			
 			</h2>
+      <h3>
+        <?php the_terms( $id, 'work_category' ); ?>
+      </h3>
       <div class="entry-content">
        <?php 
        the_content(); 

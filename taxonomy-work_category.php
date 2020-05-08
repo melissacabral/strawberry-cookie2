@@ -2,9 +2,12 @@
 
   <main class="content">
 
-    <h1><?php post_type_archive_title(); ?></h1>
+   <!--  <h1><?php the_archive_title(); ?></h1> -->
+
+   <h1>Portfolio: <?php single_cat_title(); ?></h1>
 
     <ul>
+      <li><a href="<?php echo get_post_type_archive_link('work'); ?>">All Work</a></li>
       <?php 
       //show ALL the work categories for the whole portfolio
       wp_list_categories( array(
@@ -13,6 +16,35 @@
           'depth' => 1,
       ) ); ?>
     </ul>
+
+    
+      <?php 
+      //get the ID of the cat we are showing
+      $category = get_queried_object();
+
+      //check if it has children
+      $children = get_terms($category->taxonomy, array( 
+        'parent' => $category->term_id, 
+        'hide_empty' => false 
+      ) );
+    
+      if( $children[0] -> count != 0 ){
+        $cat_id = $category->term_id;
+        ?>
+        <h2>child cats:</h2>
+        <ul>
+        <?php
+        wp_list_categories( array(
+            'taxonomy' => 'work_category',
+            'title_li' => '',
+            'child_of' => $cat_id,
+        ) );
+        ?>
+        </ul>
+        <?php
+      }
+     ?>
+    
    
   	<?php //The Loop
   	if( have_posts() ){
