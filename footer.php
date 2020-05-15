@@ -1,5 +1,5 @@
 </div>
-<!-- end .wrapper -->
+<!-- end .site -->
 
 <footer class="footer contentinfo">
   <?php 
