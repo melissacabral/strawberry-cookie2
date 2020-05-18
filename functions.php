@@ -5,6 +5,7 @@ if ( ! isset( $content_width ) ) $content_width = 640;
 //add an image size for wide banner images 
 add_image_size( 'sc_wide', 800, 300, true );
 
+
 //activate "sleeping features"
 
 //SEO-friendly titles on every page (you should not have <title> tag in header.php)
@@ -209,6 +210,17 @@ function my_theme_wrapper_start() {
 
 function my_theme_wrapper_end() {
   echo '</main>';
+}
+
+//Example of modifying the main query 
+//change the number of posts on the search results page
+add_action( 'pre_get_posts', 'sc_change_queries' );
+function sc_change_queries( $query ){
+	if( is_search() AND $query->is_main_query()  ){
+		$query->set( 'posts_per_page', 15 );
+		$query->set( 'post_type', 'post' );
+	}
+
 }
 
 
