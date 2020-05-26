@@ -223,6 +223,83 @@ function sc_change_queries( $query ){
 
 }
 
+// Customization API additions
+add_action( 'customize_register', 'sc_customize' );
+function sc_customize( $wp_customize ){
+	//footer bg color - adding to the built-in colors section
+	$wp_customize->add_setting( 'footer_bg_color', array( 'default' => 'orange' ) );
+
+	//add the User Interface - color picker
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize, 'footer_bg_color_ui', array(
+			'label' 	=> 'Footer Background Color',
+			'section' 	=>	'colors', //built-in
+			'settings'	=>	'footer_bg_color',
+		)
+	) );
+
+	//footer text color
+	$wp_customize->add_setting( 'footer_text_color', array( 'default' => 'black' ) );
+
+	//add the User Interface - color picker
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize, 'footer_text_color_ui', array(
+			'label' 	=> 'Footer Text Color',
+			'section' 	=>	'colors', //built-in
+			'settings'	=>	'footer_text_color',
+		)
+	) );
+
+	//custom section for font choice
+	$wp_customize->add_section( 'sc_typography', array(
+		'title' 		=> 'Typography',
+		'capability'	=> 'edit_theme_options',
+	) );
+
+	$wp_customize->add_setting( 'heading_font', array( 'default' => 'Lobster' ) );
+
+	$wp_customize->add_control( new WP_Customize_Control(
+		$wp_customize, 'heading_font_ui', array(
+			'label' 	=> 'Heading Font',
+			'section' 	=> 'sc_typography',
+			'settings' 	=> 'heading_font',
+			'type'		=> 'radio', //radio, checkbox or select
+			'choices'	=> array(
+				'Roboto' 			=> 'Roboto - Modern sans-serif',
+				'Lobster' 			=> 'Lobster - Flourishy',
+				'Righteous'			=> 'Righteous - Bold geometric',
+				'Roboto Condensed' 	=> 'Roboto Condensed - skinny robot',
+			),
+		)
+	) );
+
+} //sc_customize function
+
+
+//Display the customize options as embedded CSS
+add_action( 'wp_head', 'sc_embedded_css' );
+function sc_embedded_css(){
+	?>
+	<style>
+		.footer{
+			background-color: <?php echo get_theme_mod('footer_bg_color'); ?> ;
+			color: <?php echo get_theme_mod('footer_text_color'); ?> ;
+		}
+
+		h1{
+			font-family: "<?php echo get_theme_mod('heading_font'); ?>", Arial, sans-serif;
+		}
+	</style>
+	<?php
+}
+
+//custom font choice - enqueue the google font stylesheet and add custom css
+add_action( 'wp_enqueue_scripts', 'sc_google_font' );
+function sc_google_font(){
+	//convert spaces to +
+	$urlsafe = urlencode( get_theme_mod('heading_font') );
+	wp_enqueue_style( 'custom_font', 'https://fonts.googleapis.com/css2?family=' . $urlsafe . '&display=swap' );
+}
 
 
 
