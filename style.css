@@ -1,6 +1,13 @@
 /*
 Theme Name: Strawberry Cookie
 Author: Melissa Cabral
+Description: A theme for learning
+Version: 0.1
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
+Theme URI: http://
+Author URI: http://melissacabral.com
+Text Domain: strawberry-cookie
 */
 
 
@@ -1102,7 +1109,9 @@ a img.aligncenter {
 .gallery-caption{
     font-size: 90%;
 }
-
+.bypostauthor{
+    
+}
 /* 
 == CSS Grid 
 check for browsers that support grid 

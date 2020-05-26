@@ -185,7 +185,7 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
 	ob_start();
 
 	?>
-	<a class="cart-customlocation" href="<?php echo esc_url(wc_get_cart_url()); ?>" title="<?php _e('View your shopping cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
+	<a class="cart-customlocation" href="<?php echo esc_url(wc_get_cart_url()); ?>" title="<?php _e('View your shopping cart', 'strawberry-cookie'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'strawberry-cookie'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
 	<?php
 	$fragments['a.cart-customlocation'] = ob_get_clean();
 	return $fragments;
@@ -227,7 +227,10 @@ function sc_change_queries( $query ){
 add_action( 'customize_register', 'sc_customize' );
 function sc_customize( $wp_customize ){
 	//footer bg color - adding to the built-in colors section
-	$wp_customize->add_setting( 'footer_bg_color', array( 'default' => 'orange' ) );
+	$wp_customize->add_setting( 'footer_bg_color', array( 
+		'default' => 'orange',
+		'sanitize_callback' => 'wp_strip_all_tags',
+	) );
 
 	//add the User Interface - color picker
 	$wp_customize->add_control( new WP_Customize_Color_Control(
@@ -239,7 +242,10 @@ function sc_customize( $wp_customize ){
 	) );
 
 	//footer text color
-	$wp_customize->add_setting( 'footer_text_color', array( 'default' => 'black' ) );
+	$wp_customize->add_setting( 'footer_text_color', array( 
+		'default' => 'black',
+		'sanitize_callback' => 'wp_strip_all_tags'
+	 ) );
 
 	//add the User Interface - color picker
 	$wp_customize->add_control( new WP_Customize_Color_Control(
@@ -256,7 +262,10 @@ function sc_customize( $wp_customize ){
 		'capability'	=> 'edit_theme_options',
 	) );
 
-	$wp_customize->add_setting( 'heading_font', array( 'default' => 'Lobster' ) );
+	$wp_customize->add_setting( 'heading_font', array( 
+		'default' => 'Roboto',
+		'sanitize_callback' => 'wp_strip_all_tags',
+	) );
 
 	$wp_customize->add_control( new WP_Customize_Control(
 		$wp_customize, 'heading_font_ui', array(
